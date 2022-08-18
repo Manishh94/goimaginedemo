@@ -2,8 +2,10 @@
 
 one:
   name: MyString
-  price: 9.99
+  email: MyString
+  address: MyText
 
 two:
   name: MyString
-  price: 9.99
+  email: MyString
+  address: MyText

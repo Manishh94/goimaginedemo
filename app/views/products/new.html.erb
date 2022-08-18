@@ -1,9 +1,13 @@
-<h1>New product</h1>
-
-<%= render "form", product: @product %>
-
-<br>
-
-<div>
-  <%= link_to "Back to products", products_path %>
-</div>
+<%= form_for(@product) do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name, required: true, autofocus: true, placeholder: "Enter product name" %>
+  </p>
+  <p>
+    <%= f.label :price %><br>
+    <%= f.number_field :price, required: true %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

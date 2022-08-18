@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
-  resources :products
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root 'products#index'
 
-  # Defines the root path route ("/")
-  root "products#index"
+  get 'carts/:id' => "carts#show", as: "cart"
+  delete 'carts/:id' => "carts#destroy"
+
+  get 'line_items/:id/add' => "line_items#add_quantity", as: "line_item_add"
+  get 'line_items/:id/reduce' => "line_items#reduce_quantity", as: "line_item_reduce"
+  post 'line_items' => "line_items#create"
+  get 'line_items/:id' => "line_items#show", as: "line_item"
+  delete 'line_items/:id' => "line_items#destroy"
+
+  resources :products
+  resources :orders
 end
