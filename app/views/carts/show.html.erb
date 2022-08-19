@@ -1,21 +1,46 @@
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
 <h2>Cart show</h2>
-<ul>
+<table>
+  <tr>
+    <th>Product Name</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Shipping name</th>
+    <th>Shipping price </th>
+    <th>Total amount </th>
+    <th>Actions </th>
+  </tr>
   <% @cart.line_items.each do |line_item| %>
-    <li>Item: <%= line_item.product.name %>/ Price: <%= number_to_currency(line_item.product.price) %>/ Quantity: <%= line_item.quantity %>/ Total Price: <%= number_to_currency(line_item.total_price) %>
-    # See lineItem section below for explanation of line_item links
-    <ul>
-      <li>
-        <%= link_to "Add one", line_item_add_path(:id => line_item), method: :get %>
-        <%= link_to "Reduce one", line_item_reduce_path(:id => line_item), method: :get %>
-      </li>
-      <li>
+    <tr>
+      <td><%= line_item.product.name %></td>
+      <td><%= line_item.quantity %></td>
+      <td><%= number_to_currency(line_item.product.price) %></td>
+      <td><%= line_item.product.vendor.shipping_name %></td>
+      <td><%= line_item.product.vendor.shipping_price %></td>
+      <td><%= number_to_currency(line_item.total_price) %></td>
+      <td><%= link_to "Add one", line_item_add_path(:id => line_item), method: :get %> |
+        <%= link_to "Reduce one", line_item_reduce_path(:id => line_item), method: :get %> |
         <%= link_to "Remove item", line_item_path(line_item), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
-                  } %>
-      </li>
-    </ul>
-    #
+                  } %></td>
+    </tr>
   <% end %>
 </ul>
 <h3>Sub total: <%= number_to_currency(@cart.sub_total) %></h3>

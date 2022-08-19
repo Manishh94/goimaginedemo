@@ -5,6 +5,6 @@ class LineItem < ActiveRecord::Base
 
   # LOGIC
   def total_price
-    self.quantity * self.product.price
+    self.quantity * self.product.price + self.product.vendor.shipping_price
   end
 end
