@@ -42,6 +42,7 @@ tr:nth-child(even) {
   <% end %>
 </ul>
 <br>
+<%= button_to 'Add more product', products_path, method: :get %>
 <h3>Sub total: <%= number_to_currency(@cart.sub_total) %></h3>
 <%= link_to "Proceed to checkout", new_order_path %>
 <br><br>
