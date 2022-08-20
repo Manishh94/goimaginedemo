@@ -1,0 +1,11 @@
+<a href="javascript:void(0);" class="btn btn-success" id="paymentId">Submit Payment</a>
+
+<script type="text/javascript">
+  $(document).on("click", "#paymentId", function(){
+    $.ajax({
+      url: "<%= checkout_create_path %>",
+      type: "post",
+      data: "{order_id: <%= Order.last.id %>}"
+    })
+  })
+</script>

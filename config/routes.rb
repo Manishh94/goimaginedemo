@@ -12,4 +12,6 @@ Rails.application.routes.draw do
 
   resources :products
   resources :orders
+
+  post 'checkout/create' => 'checkout#create', as: "checkout_create"
 end

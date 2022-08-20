@@ -1,7 +1,7 @@
 <%= form_for(@order) do |f| %>
   <p>
     <%= f.label :name %><br>
-    <%= f.text_field :name, required: true, autofocus: true %>
+    <%= f.text_field :name, autofocus: true %>
   </p>
   <p>
     <%= f.label :email %><br>
@@ -11,7 +11,8 @@
     <%= f.label :address %><br>
     <%= f.text_area :address %>
   </p>
+  <p><%= button_to "Submit Payment", checkout_create_path, params: {}, remote: true %></p>
   <p>
-    <%= f.submit %>
+    <%#= f.submit %>
   </p>
 <% end %>

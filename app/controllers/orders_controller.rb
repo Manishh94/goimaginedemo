@@ -20,7 +20,8 @@ class OrdersController < ApplicationController
     @order.save
     Cart.destroy(session[:cart_id])
     session[:cart_id] = nil
-    redirect_to root_path
+    # redirect_to checkout_create_url(order_id: @order.id)
+    # redirect_to root_path
   end
 
   private

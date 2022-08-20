@@ -1,0 +1,1 @@
+Stripe.api_key = "Put stripe secret key here"
