@@ -30,6 +30,7 @@ class ProductsController < ApplicationController
 
   private
     def product_params
-      params.require(:product).permit(:name, :price)
+      params[:product][:vendor_id] = Vendor.pluck(:id).sample
+      params.require(:product).permit(:name, :price, :vendor_id)
     end
 end
